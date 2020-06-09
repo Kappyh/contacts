@@ -5,13 +5,13 @@ import { ContactController } from './controllers/ContactController';
 const routes = express.Router();
 const contactController = new ContactController();
 
-routes.get('/items', contactController.index);
+routes.get('/contact', contactController.index);
 
-routes.post('/points', contactController.create);
+routes.post('/contact', contactController.create);
 
-routes.post('/points/:id', contactController.update);
+routes.post('/contact/:id', contactController.update);
 
-routes.delete('/points/:id', contactController.delete);
+routes.delete('/contact/:id', contactController.delete);
 
 
 export default routes;

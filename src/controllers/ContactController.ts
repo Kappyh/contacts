@@ -7,7 +7,7 @@ export class ContactController {
 
     const contacts = await knex('contact').select('*');
 
-    return response.json({ contacts });
+    return response.json(contacts);
   }
 
   async create(request: Request, response: Response) {
