@@ -1,3 +1,11 @@
+table{
+    margin-top: 40px;
+}
 .table-striped tbody tr:nth-of-type(odd){
     background-color: rgba($color: #575fcf, $alpha: 0.4) !important;
+}
+
+.btn-actions{
+    height: 26px !important;
+    margin: 7px !important;
 }

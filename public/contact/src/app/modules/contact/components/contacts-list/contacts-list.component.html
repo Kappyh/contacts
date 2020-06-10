@@ -6,7 +6,7 @@
       <th scope="col">Telefone</th>
       <th scope="col">Email</th>
       <th scope="col">Endereço</th>
-      <th scope="col">Actions</th>
+      <th scope="col">Ações</th>
     </tr>
     </thead>
     <tbody>
@@ -19,8 +19,8 @@
       <td>{{ contact.email }}</td>
       <td>{{ contact.address }}</td>
       <td>
-          <span>Editar</span>
-          <span>Excluir</span>
+        <button type="button" class="btn btn-danger btn-sm btn-actions" (click)="removeContact(contact.id)">Excluir</button>
+        <button type="button" class="btn btn-warning btn-sm btn-actions" (click)="editContact(contact.id)">Editar button</button>
       </td>
     </tr>
     </tbody>

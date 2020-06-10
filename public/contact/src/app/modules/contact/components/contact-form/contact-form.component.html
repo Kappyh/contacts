@@ -1,0 +1,26 @@
+<div class="form-container">
+    <form #formContact="ngForm" class="contact-form card" (submit)="saveContact()">
+        <fieldset>
+            <legend>Contato</legend>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" name="name" [(ngModel)]="contactForm.name" class="form-control" id="name" aria-describedby="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" [(ngModel)]="contactForm.email" class="form-control" id="email" aria-describedby="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="phone" name="phone" [(ngModel)]="contactForm.phone" class="form-control" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Endereço</label>
+                <input type="text" name="address" [(ngModel)]="contactForm.address" class="form-control" id="address" required>
+            </div>
+        </fieldset>
+        <div class="btn-container">
+            <button [disabled]="!formContact.valid" type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+    </form>
+</div>

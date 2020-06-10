@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export class ContactComponent implements OnInit {
 
   public contacts: Array<Contact> = [];
+  public fillForm: boolean = false;
 
   constructor(private contactService: ContactService) { }
 
@@ -23,6 +24,10 @@ export class ContactComponent implements OnInit {
     }, err => {
       return Swal.fire('Error!', err, 'error');
     })
+  }
+
+  public showForm(state: boolean) {
+    this.fillForm = state;
   }
 
 }

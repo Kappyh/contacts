@@ -1,0 +1,20 @@
+.contact-form{
+    padding: 20px;
+    width: 50%;
+    button{
+        text-align: right;
+    }
+}
+
+.form-container{
+    margin-top: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
