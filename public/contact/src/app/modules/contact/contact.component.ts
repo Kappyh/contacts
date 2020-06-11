@@ -30,4 +30,10 @@ export class ContactComponent implements OnInit {
     this.fillForm = state;
   }
 
+  public refreshList(isChanged: boolean) {
+    if (isChanged) {
+      this.listContacts();
+      this.fillForm = false;
+    }
+  }
 }

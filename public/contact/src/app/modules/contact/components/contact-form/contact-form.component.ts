@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ContactService } from 'src/app/shared/services/contact.service';
 import { Contact } from 'src/app/shared/models/contact';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,6 +11,7 @@ import { Contact } from 'src/app/shared/models/contact';
 export class ContactFormComponent implements OnInit {
 
   public contactForm: Contact;
+  @Output() changedList: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private contactService: ContactService) { }
 
@@ -18,11 +20,19 @@ export class ContactFormComponent implements OnInit {
   }
 
   public saveContact() {
-    if(this.contactForm.name){
+    if (!this.contactForm.id) {
       this.contactService.create(this.contactForm).subscribe(data => {
-        console.log(data);
+        this.changedList.emit(true);
+        Swal.fire('Sucesso', 'Novo contato criado!', 'success');
       }, err => {
-        console.log(err);
+        Swal.fire('Erro', err, 'error');
+      })
+    } else {
+      this.contactService.edit(this.contactForm.id, this.contactForm).subscribe(data => {
+        this.changedList.emit(true);
+        Swal.fire('Sucesso', 'Contato alterado!', 'success');
+      }, err => {
+        Swal.fire('Erro', err, 'error');
       })
     }
   }

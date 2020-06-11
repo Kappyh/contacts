@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Contact } from 'src/app/shared/models/contact';
 import { ContactService } from 'src/app/shared/services/contact.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contacts-list',
@@ -28,12 +29,20 @@ export class ContactsListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
+  private removefromLocalList(id: number): void {
+    this._contacts.forEach((contact, index) => {
+      if (contact.id === id) {
+        this._contacts.splice(index, 1);
+      }
+    })
+  }
+
   public removeContact(id: number) {
     this.contactService.delete(id).subscribe(data => {
-      console.log(data)
-      // remover o contato do array se removido
+      this.removefromLocalList(id);
+      Swal.fire(data.message)
     }, err => {
-      console.log(err);
+      Swal.fire(err);
     })
   }
 

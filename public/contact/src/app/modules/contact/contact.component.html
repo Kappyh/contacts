@@ -2,9 +2,9 @@
 
 <div class="container">
     <div *ngIf="fillForm">
-        <app-contact-form></app-contact-form>
+        <app-contact-form (changedList)="refreshList($event)"></app-contact-form>
     </div>
-    <div *ngIf="contacts">
+    <div *ngIf="contacts.length">
         <app-contacts-list [contacts]="contacts"></app-contacts-list>
     </div>
 </div>

@@ -1,5 +1,5 @@
-<table class="table table-striped">
-    <thead>
+<table class="table table-striped" *ngIf="_contacts.length">
+  <thead>
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Nome</th>
@@ -8,8 +8,8 @@
       <th scope="col">Endereço</th>
       <th scope="col">Ações</th>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
     <tr *ngFor="let contact of _contacts;">
       <th scope="row">{{ contact.id }}</th>
       <td>
@@ -19,9 +19,11 @@
       <td>{{ contact.email }}</td>
       <td>{{ contact.address }}</td>
       <td>
-        <button type="button" class="btn btn-danger btn-sm btn-actions" (click)="removeContact(contact.id)">Excluir</button>
-        <button type="button" class="btn btn-warning btn-sm btn-actions" (click)="editContact(contact.id)">Editar button</button>
+        <button type="button" class="btn btn-danger btn-sm btn-actions"
+          (click)="removeContact(contact.id)">Excluir</button>
+        <button type="button" class="btn btn-warning btn-sm btn-actions" (click)="editContact(contact.id)">Editar
+          button</button>
       </td>
     </tr>
-    </tbody>
-  </table>
+  </tbody>
+</table>
