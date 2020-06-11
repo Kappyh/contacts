@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ContactService } from 'src/app/shared/services/contact.service';
 import { Contact } from 'src/app/shared/models/contact';
 import Swal from 'sweetalert2';
@@ -10,13 +10,17 @@ import Swal from 'sweetalert2';
 })
 export class ContactFormComponent implements OnInit {
 
-  public contactForm: Contact;
+  public contactForm: Contact = new Contact();
+
+  @Input() set contactForEdit(contact: Contact) {
+    Object.assign(this.contactForm, contact);
+  };
   @Output() changedList: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private contactService: ContactService) { }
 
+
   ngOnInit(): void {
-    this.contactForm = new Contact();
   }
 
   public saveContact() {

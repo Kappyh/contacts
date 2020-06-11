@@ -11,6 +11,7 @@ export class ContactComponent implements OnInit {
 
   public contacts: Array<Contact> = [];
   public fillForm: boolean = false;
+  public contactForEdit: Contact = new Contact();
 
   constructor(private contactService: ContactService) { }
 
@@ -35,5 +36,10 @@ export class ContactComponent implements OnInit {
       this.listContacts();
       this.fillForm = false;
     }
+  }
+
+  public editContact(contact: Contact) {
+    this.contactForEdit = contact;
+    this.fillForm = true;
   }
 }

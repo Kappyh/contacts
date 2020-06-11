@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Contact } from 'src/app/shared/models/contact';
 import { ContactService } from 'src/app/shared/services/contact.service';
 import Swal from 'sweetalert2';
@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 export class ContactsListComponent implements OnInit, OnChanges {
 
   public _contacts: Array<Contact> = [];
+
+  @Output() contactForEdit: EventEmitter<Contact> = new EventEmitter<Contact>();
 
   @Input() set contacts(contacts) {
     if (contacts) {
@@ -46,6 +48,8 @@ export class ContactsListComponent implements OnInit, OnChanges {
     })
   }
 
-  public editContact(id: number) { }
+  public editContact(contact: Contact) {
+    this.contactForEdit.emit(contact);
+  }
 
 }
