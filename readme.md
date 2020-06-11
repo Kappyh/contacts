@@ -14,9 +14,9 @@ Necessário rodar a instalação das dependência dos projetos backend e front e
 
 No backend necessário rodar o comando de migrations para criar a tabela, caso queria alimentar a tabela com alguns dados para teste está disponível também um seed.
 
-`knex:migrate`
+`npm run knex:migrate`
 
-`knex:seed`
+`npm run knex:seed`
 
 Para rodar o projeto backend:
 
